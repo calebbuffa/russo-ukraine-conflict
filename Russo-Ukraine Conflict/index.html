@@ -36,18 +36,22 @@
         view.when(function() {
           // get the first layer in the collection of operational layers in the WebMap
           // when the resources in the MapView have loaded.
-          var ct = webmap.layers.getItemAt(1);
-          var v = webmap.layers.getItemAt(2);
+          var b = webmap.layers.getItemAt(1);
+          var ct = webmap.layers.getItemAt(2);
+          var vc = webmap.layers.getItemAt(3);
 
           var legend = new Legend({
             view: view,
             layerInfos: [
               {
-                layer: ct, 
-                title: "Contentisted Territories"
+                layer: b, 
+                title: "Russia-Ukraine Borders"
               }, {
-              layer:v,
-              title:'Armed Conflict Events'
+              layer:ct,
+              title:'Contested Territories'
+              }, {
+                layer:vc,
+                title: 'Armed Conflict Locations'
               }
             ]
           });
