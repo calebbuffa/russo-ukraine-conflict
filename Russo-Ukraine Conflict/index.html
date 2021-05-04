@@ -22,8 +22,9 @@
       require([
       "esri/WebScene",
       "esri/views/SceneView",
-      "dojo/domReady!"
-    ], function(WebScene, SceneView) {
+      "dojo/domReady!",
+	      "esri/widgets/Legend"
+    ], function(WebScene, SceneView, Legend) {
 
 var scene = new WebScene({
         portalItem:{
@@ -35,6 +36,12 @@ var scene = new WebScene({
         map: scene,
 		viewingMode:'global'
       });
+	      
+      var legend = new Legend ({
+        view:view
+      });
+
+      view.ui.add(legend, "top-right");
 
     });
     </script>
