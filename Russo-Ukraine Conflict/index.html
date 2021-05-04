@@ -1,75 +1,49 @@
-  <html>
+  
+<html>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-    <title>Russo-Ukraine Conflict</title>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Map 3</title>
+    
     <style>
       html,
-      body,
-      #viewDiv {
-        padding: 0;
-        margin: 0;
-        height: 100%;
-        width: 100%;
-      }
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
     </style>
 
-    <link rel="stylesheet" href="https://js.arcgis.com/4.18/esri/themes/light/main.css" />
-
-    <script src="https://js.arcgis.com/4.18/"></script>
-
+  <link rel="stylesheet" href="https://js.arcgis.com/4.18/esri/css/main.css">
+  <script src="https://js.arcgis.com/4.18/"></script>
+    
     <script>
-      require(["esri/views/MapView", "esri/WebMap", "esri/widgets/Legend"], function(MapView, WebMap, Legend) {
+      require([
+      "esri/WebScene",
+      "esri/views/SceneView",
+      "dojo/domReady!"
+    ], function(WebScene, SceneView) {
 
-        var webmap = new WebMap({
-        portalItem: { // autocasts as new PortalItem()
-          id: "5d9891a783a34ee9a454ad17254c8d50"
+var scene = new WebScene({
+        portalItem:{
+         id:"2cbc34afc9694baabf47642966ebd4ad# 
         }
       });
-
-        var view = new MapView({
-          map: webmap,
-          container: "viewDiv"
-        });
-        
-        view.when(function() {
-          // get the first layer in the collection of operational layers in the WebMap
-          // when the resources in the MapView have loaded.
-          var b = webmap.layers.getItemAt(1);
-          var ct = webmap.layers.getItemAt(2);
-          var vc = webmap.layers.getItemAt(3);
-
-          var legend = new Legend({
-            view: view,
-            layerInfos: [
-              {
-                layer: b, 
-                title: "Russia-Ukraine Borders"
-              }, {
-              layer:ct,
-              title:'Contested Territories'
-              }, {
-                layer:vc,
-                title: 'Armed Conflict Locations'
-              }
-            ]
-          });
-
-          // Add widget to the bottom right corner of the view
-          view.ui.add(legend, "top-right");
-          
-          t.featureReduction = {
-  type: "cluster",
-  clusterRadius: "75px"
-};
-        });
-        
+      var view = new SceneView({
+        container: "viewDiv",
+        map: scene,
+		viewingMode:'global'
       });
+
+    });
     </script>
-  </head>
+    
+    </head>
 
   <body>
-    <div id="viewDiv"></div>
+<div id="viewDiv"></div>
   </body>
+  
 </html>
